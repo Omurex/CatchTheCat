@@ -28,11 +28,11 @@ struct DijkstraNodeInfo
 class GraphFunctions 
 {
 	public:
-	static NodeBoard createBoardFromWorld(World* world);
+	static NodeBoard createBoardFromWorld(World* world, float blockedNeighborWeightModifier = 1);
 	static void linkNode(Node& node, NodeBoard& board, World* world, float blockedNeighborWeightModifier = 1);
 
 	static std::vector<Node*> getEdgeNodes(NodeBoard& board);
-	static std::vector<Point2D> getClosestPathToEdge(Point2D startPosMiddleOrigin, World* world);
+	static std::vector<Point2D> getClosestPathToEdge(Point2D startPosMiddleOrigin, World* world, float blockedNeighborWeightModifier = 1);
     
 	static std::unordered_map<Node*, DijkstraNodeInfo> dijkstraSearchNoTarget(Node& startNode, NodeBoard& board, World* world);
 

@@ -2,7 +2,7 @@
 #include "World.h"
 
 
-NodeBoard GraphFunctions::createBoardFromWorld(World* world)
+NodeBoard GraphFunctions::createBoardFromWorld(World* world, float blockedNeighborWeightModifier)
 {
 	int wSize = world->getWorldSideSize();
 
@@ -30,7 +30,7 @@ NodeBoard GraphFunctions::createBoardFromWorld(World* world)
 		{
 			if (board[c][r] != nullptr)
 			{
-				linkNode(*board[c][r], board, world);
+				linkNode(*board[c][r], board, world, blockedNeighborWeightModifier);
 				//std::cout << "COMPLETE" << std::endl;
 			}
 		}
@@ -107,9 +107,9 @@ std::vector<Node*> GraphFunctions::getEdgeNodes(NodeBoard& board)
 }
 
 
-std::vector<Point2D> GraphFunctions::getClosestPathToEdge(Point2D startPosMiddleOrigin, World* world)
+std::vector<Point2D> GraphFunctions::getClosestPathToEdge(Point2D startPosMiddleOrigin, World* world, float blockedNeighborWeightModifier)
 {
-	NodeBoard board = GraphFunctions::createBoardFromWorld(world);
+	NodeBoard board = GraphFunctions::createBoardFromWorld(world, blockedNeighborWeightModifier);
 
 	Point2D catPosStandard = world->convertToStandard(startPosMiddleOrigin);
 	Node* catNode = board[catPosStandard.x][catPosStandard.y];

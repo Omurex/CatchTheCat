@@ -11,7 +11,7 @@ Point2D Cat::Move(World* world)
 
 Point2D Cat::calculateOptimalNextMove(World* world)
 {
-	std::vector<Point2D> path = GraphFunctions::getClosestPathToEdge(world->getCat(), world);
+	std::vector<Point2D> path = GraphFunctions::getClosestPathToEdge(world->getCat(), world, 1);
 
 	if (path.size() < 2) 
 	{
