@@ -50,7 +50,7 @@ install (FILES ${CATCHTHECAT_INC} DESTINATION include/catchthecat)
 #   add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 # ENDIF()
 
-add_executable(catchthecat ${CATCHTHECAT_SRC} ${CATCHTHECAT_INC})
+add_executable(catchthecat ${CATCHTHECAT_SRC} ${CATCHTHECAT_INC} "Node.h" "Node.cpp" "Connection.h" "Connection.cpp")
 
 target_include_directories(catchthecat PUBLIC ${SDL2_INCLUDE_DIR} ${CORE_INC_DIR})
 target_link_libraries (catchthecat PUBLIC SDL2 IMGUI core)

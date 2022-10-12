@@ -72,6 +72,19 @@ Point2D World::SW(const Point2D& p) {
   return {p.x, p.y+1};
 }
 
+
+Point2D World::convertToStandard(const Point2D& p)
+{
+	return Point2D(p.x + ((sideSize + 1) / 2), p.y + ((sideSize + 1) / 2));
+}
+
+
+Point2D World::convertToMiddleOrigin(const Point2D& p)
+{
+	return Point2D(p.x - ((sideSize + 1) / 2), p.y - ((sideSize + 1) / 2));
+}
+
+
 bool World::isValidPosition(const Point2D& p) {
     auto sideOver2=sideSize/2;
     return
@@ -209,6 +222,7 @@ void World::step() {
     auto move = cat->Move(this);
     if(catCanMoveToPosition(move)) {
       catPosition = move;
+      std::cout << std::to_string(move.x) + " , " + std::to_string(move.y) << std::endl;
       catWon = catWinVerification();
     }
     else {
