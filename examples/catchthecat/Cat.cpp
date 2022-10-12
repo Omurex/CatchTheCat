@@ -27,13 +27,13 @@ Point2D Cat::Move(World* world) {
 
 	if (tog == false)
 	{
-		return World::NE(pos);
 		tog = true;
+		return World::NE(pos);
 	}
 	else
 	{
-		return World::E(pos);
 		tog = false;
+		return World::E(pos);
 	}
 }
 
@@ -62,7 +62,7 @@ std::vector<Point2D> Cat::calculateOptimalPath(World* world)
 			if (board[c][r] != nullptr)
 			{
 				linkNode(*board[c][r], board, world);
-				std::cout << "COMPLETE" << std::endl;
+				//std::cout << "COMPLETE" << std::endl;
 			}
 		}
 	}
@@ -76,7 +76,7 @@ std::vector<Point2D> Cat::calculateOptimalPath(World* world)
 
 void Cat::linkNode(Node& node, NodeBoard& board, World* world)
 {
-	std::cout << "STANDARD: " + node.getPoint().toString() << std::endl;
+	//std::cout << "THIS| STANDARD: " + node.getPoint().toString() + "WORLD: " + world->convertToMiddleOrigin(node.getPoint()).toString() << std::endl;
 	for (int xMod = -1; xMod <= 1; xMod++)
 	{
 		for (int yMod = -1; yMod <= 1; yMod++)
@@ -91,11 +91,11 @@ void Cat::linkNode(Node& node, NodeBoard& board, World* world)
 
 			Point2D worldAdjustedPoint = world->convertToMiddleOrigin(point);
 
-			std::cout << "WORLD: " + worldAdjustedPoint.toString() << std::endl;
+			//std::cout << "STANDARD: " + point.toString() + "WORLD: " + worldAdjustedPoint.toString() << std::endl;
 
-			std::cout << world->isValidPosition(worldAdjustedPoint) << std::endl;
+			//std::cout << world->isValidPosition(worldAdjustedPoint) << std::endl;
 
-			if (world->isValidPosition(worldAdjustedPoint))
+			/*if (world->isValidPosition(worldAdjustedPoint))
 			{
 				std::cout << (world->getContent(worldAdjustedPoint) == false) << std::endl;
 
@@ -103,7 +103,7 @@ void Cat::linkNode(Node& node, NodeBoard& board, World* world)
 				{
 					std::cout << world->isNeighbor(world->convertToMiddleOrigin(node.getPoint()), worldAdjustedPoint) << std::endl;
 				}
-			}
+			}*/
 
 			if (world->isValidPosition(worldAdjustedPoint) && world->getContent(worldAdjustedPoint) == false && 
 				world->isNeighbor(world->convertToMiddleOrigin(node.getPoint()), worldAdjustedPoint))

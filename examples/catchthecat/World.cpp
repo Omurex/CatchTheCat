@@ -75,13 +75,13 @@ Point2D World::SW(const Point2D& p) {
 
 Point2D World::convertToStandard(const Point2D& p)
 {
-	return Point2D(p.x + ((sideSize + 1) / 2), p.y + ((sideSize + 1) / 2));
+	return Point2D(p.x + ((sideSize - 1) / 2), p.y + ((sideSize - 1) / 2));
 }
 
 
 Point2D World::convertToMiddleOrigin(const Point2D& p)
 {
-	return Point2D(p.x - ((sideSize + 1) / 2), p.y - ((sideSize + 1) / 2));
+	return Point2D(p.x - ((sideSize - 1) / 2), p.y - ((sideSize - 1) / 2));
 }
 
 
