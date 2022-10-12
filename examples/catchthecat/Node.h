@@ -23,6 +23,7 @@ class Node
 	Node(Point2D _point) : point(_point) {}
 	~Node();
 
+	const std::unordered_map<Node*, Connection*>& getConnectionList() { return connectionList; }
 	Point2D getPoint() { return point; }
 	Connection* getConnection(Node& other);
 

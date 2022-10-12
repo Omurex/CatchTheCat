@@ -60,6 +60,7 @@ Node* Connection::getOtherNode(Node& node)
 float Connection::setWeight(float _weight)
 {
 	if (_weight < 0) weight = 0;
+	else if (weight >= INT_MAX) weight = INT_MAX - 1;
 	else weight = _weight;
 
 	return getWeight();
