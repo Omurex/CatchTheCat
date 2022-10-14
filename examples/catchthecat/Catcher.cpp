@@ -2,24 +2,41 @@
 #include "World.h"
 
 Point2D Catcher::Move(World* world) {
-  auto side = world->getWorldSideSize()/2;
-  for(;;) {
-
-    //Point2D p = {Random::Range(-side, side), Random::Range(-side, side)};
+  for(;;) 
+  {
     Point2D cat = world->getCat();
 
 	auto catPredictedPath = GraphFunctions::getClosestPathToEdge(cat, world, 1);
 
 	if (catPredictedPath.size() < 2)
 	{
-		throw new _exception();
+		auto pos = world->getCat();
+
+		std::vector<Point2D> possibleMoves
+		{
+			World::NE(pos), World::NW(pos), World::E(pos),
+			World::W(pos), World::SW(pos), World::SE(pos)
+		};
+
+		while (possibleMoves.empty() == false)
+		{
+			auto rand = Random::Range(0, possibleMoves.size() - 1);
+
+			Point2D point = possibleMoves[rand];
+
+			if (world->getContent(point) == false)
+			{
+				return point;
+			}
+
+			possibleMoves.erase(possibleMoves.begin() + rand);
+		}
+
+		return pos;
 	}
 	else
 	{
 		return catPredictedPath.at(catPredictedPath.size() - 1);
 	}
-
-    /*if(cat.x!=p.x && cat.y!=p.y && !world->getContent(p))
-      return p;*/
   }
 }

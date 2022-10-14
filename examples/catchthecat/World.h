@@ -58,7 +58,7 @@ class World: GameObject {
   static Point2D SW(const Point2D &p);
 
   Point2D convertToStandard(const Point2D& p); // Converts point as if 0, 0 is top left of map
-  Point2D convertToMiddleOrigin(const Point2D& p);
+  Point2D convertToMiddleOrigin(const Point2D& p); // Converts point as if middle of map is 0, 0 of map
 
   // returns the cat position
   Point2D getCat();
