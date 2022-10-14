@@ -40,21 +40,21 @@ void Node::removeConnection(Node* other)
 }
 
 
-std::string Node::toStringConnections()
-{
-	std::string returnStr = point.toString() + " : ";
-
-	for (auto it = connectionList.begin(); it != connectionList.end();)
-	{
-		returnStr += it->second->getOtherNode(*this)->point.toString();
-
-		it++;
-
-		if (it != connectionList.end())
-		{
-			returnStr += ", ";
-		}
-	}
-
-	return returnStr;
-}
+//std::string Node::toStringConnections()
+//{
+//	std::string returnStr = point.toString() + " : ";
+//
+//	for (auto it = connectionList.begin(); it != connectionList.end();)
+//	{
+//		returnStr += it->second->getOtherNode(*this)->point.toString();
+//
+//		it++;
+//
+//		if (it != connectionList.end())
+//		{
+//			returnStr += ", ";
+//		}
+//	}
+//
+//	return returnStr;
+//}

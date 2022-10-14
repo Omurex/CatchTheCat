@@ -27,5 +27,5 @@ class Node
 	Point2D getPoint() { return point; }
 	Connection* getConnection(Node& other);
 
-	std::string toStringConnections();
+	//std::string toStringConnections();
 };
